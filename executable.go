@@ -32,9 +32,20 @@ func main() {
 	addrespose, okAdd, msnAdd := car.AddItem(mapcar, 9, car.NewCar("Nissan", "Versa", 2020, 90000))
 	fmt.Println("Add item to car map **********************************")
 	if okAdd {
-		fmt.Println(addrespose)
+		for k, v := range addrespose {
+			fmt.Println("**************************************************")
+			fmt.Printf("key[%v] value[%v]\n", k, v)
+		}
 	} else {
 		fmt.Println(msnAdd)
+	}
+
+	fmt.Println("Remove item to car map **********************************")
+	removeresponse, okRemove, msnRemove := car.DeleteItem(mapcar, 1)
+	if !okRemove {
+		fmt.Println(msnRemove)
+	} else {
+		fmt.Println("DeleteItem() Updated Map: ", removeresponse)
 	}
 
 }
