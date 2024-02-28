@@ -45,3 +45,29 @@ func AddItem(listCar map[int]Car, idKey int, item Car) (map[int]Car, bool, strin
 	listCar[idKey] = item
 	return listCar, true, "Success"
 }
+
+// Delete item of the map
+func DeleteItem(listCar map[int]Car, id int) (map[int]Car, bool, string) {
+	if _, ok := listCar[id]; !ok {
+		return listCar, false, fmt.Sprintf("Car with id: %v doesn't exist", id)
+	}
+	delete(listCar, id)
+	return listCar, true, ""
+}
+
+// update item of the map
+func UpdateItem(listCar map[int]Car, idKey int, item Car) (map[int]Car, bool, string) {
+	if _, ok := listCar[idKey]; !ok {
+		return listCar, false, fmt.Sprintf("article with id: %v doesn't exist", idKey)
+	}
+
+	at := listCar[idKey]
+
+	at.brand = item.brand
+	at.model = item.model
+	at.year = item.year
+	at.price = item.price
+	listCar[idKey] = at
+
+	return listCar, true, ""
+}

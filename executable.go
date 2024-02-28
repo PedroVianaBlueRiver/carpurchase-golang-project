@@ -40,4 +40,23 @@ func main() {
 		fmt.Println(msnAdd)
 	}
 
+	fmt.Println("Remove item to car map **********************************")
+	removeresponse, okRemove, msnRemove := car.DeleteItem(mapcar, 1)
+	if !okRemove {
+		fmt.Println(msnRemove)
+	} else {
+		fmt.Println("DeleteItem() Updated Map: ", removeresponse)
+	}
+
+	fmt.Println("************************************************* updateItem() *******************************************************************")
+	updatecar := car.NewCar("KIA", "Soul", 2024, 23000.53)
+
+	updateresponse, okupdate, msnupdate := car.UpdateItem(mapcar, 2, updatecar)
+
+	if !okupdate {
+		fmt.Println(msnupdate)
+	} else {
+		fmt.Println("updateItem() Updated Map: ", updateresponse)
+	}
+
 }
